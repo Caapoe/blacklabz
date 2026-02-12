@@ -27,24 +27,24 @@ export default function Home() {
     while (true) {
       for (let p = 0; p < total; p++) {
         const phrase = phrases[p];
-        const isSlowZone = p >= total - 2; // last two phrases
+        const isLast = p === total - 1; // only "Tallinn"
 
         // Typing speed: fast in the middle, slow at start and end
         let typeSpeed: number;
         if (p === 0) typeSpeed = 100;
-        else if (isSlowZone) typeSpeed = 120;
+        else if (isLast) typeSpeed = 120;
         else typeSpeed = 40;
 
         // Delete speed
         let deleteSpeed: number;
-        if (isSlowZone) deleteSpeed = 80;
+        if (isLast) deleteSpeed = 80;
         else if (p === 0) deleteSpeed = 60;
         else deleteSpeed = 25;
 
         // Pause after typing
         let pauseAfter: number;
         if (p === 0) pauseAfter = 1500;
-        else if (isSlowZone) pauseAfter = 2000;
+        else if (isLast) pauseAfter = 2500;
         else pauseAfter = 600;
 
         // Type
@@ -61,7 +61,7 @@ export default function Home() {
           await delay(deleteSpeed);
         }
 
-        await delay(isSlowZone ? 500 : 200);
+        await delay(isLast ? 500 : 200);
       }
     }
   }, []);
