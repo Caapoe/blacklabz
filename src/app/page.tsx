@@ -120,9 +120,23 @@ export default function Home() {
       // Hold all three visible
       await delay(2500);
 
-      // Fade out scatter
+      // Delete each scatter word character by character
+      const currentPrompts = [...scatterWords];
+      for (let w = 0; w < currentPrompts.length; w++) {
+        const word = currentPrompts[w];
+        for (let i = word.length - 1; i >= 0; i--) {
+          setScatterPrompts((prev) =>
+            prev.map((p, idx) =>
+              idx === w ? { ...p, displayed: word.slice(0, i) } : p
+            )
+          );
+          await delay(50);
+        }
+        await delay(100);
+      }
+
       setScatterPrompts([]);
-      await delay(800);
+      await delay(600);
     }
   }, []);
 
