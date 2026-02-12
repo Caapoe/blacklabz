@@ -2,7 +2,18 @@
 
 import { useEffect, useState, useCallback } from "react";
 
-const phrases = ["Black Labz", "Web 3 Service Designs"];
+const phrases = [
+  "Black Labz",
+  "Web 3 Service Designs",
+  "Product Lead",
+  "AI Driven",
+  "Data Oriented",
+  "Brand Agnostic",
+  "Solution Oriented",
+  "Vibe Coder",
+  "From Heart of Europe",
+  "Tallinn",
+];
 
 export default function Home() {
   const [displayed, setDisplayed] = useState("");
@@ -10,27 +21,47 @@ export default function Home() {
 
   const runSequence = useCallback(async () => {
     const delay = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    const total = phrases.length;
 
-    for (let p = 0; p < phrases.length; p++) {
-      const phrase = phrases[p];
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      for (let p = 0; p < total; p++) {
+        const phrase = phrases[p];
+        const isSlowZone = p >= total - 2; // last two phrases
 
-      // Type
-      for (let i = 1; i <= phrase.length; i++) {
-        setDisplayed(phrase.slice(0, i));
-        await delay(100);
-      }
+        // Typing speed: fast in the middle, slow at start and end
+        let typeSpeed: number;
+        if (p === 0) typeSpeed = 100;
+        else if (isSlowZone) typeSpeed = 120;
+        else typeSpeed = 40;
 
-      // Pause before deleting (skip delete on last phrase)
-      if (p < phrases.length - 1) {
-        await delay(1500);
+        // Delete speed
+        let deleteSpeed: number;
+        if (isSlowZone) deleteSpeed = 80;
+        else if (p === 0) deleteSpeed = 60;
+        else deleteSpeed = 25;
+
+        // Pause after typing
+        let pauseAfter: number;
+        if (p === 0) pauseAfter = 1500;
+        else if (isSlowZone) pauseAfter = 2000;
+        else pauseAfter = 600;
+
+        // Type
+        for (let i = 1; i <= phrase.length; i++) {
+          setDisplayed(phrase.slice(0, i));
+          await delay(typeSpeed);
+        }
+
+        await delay(pauseAfter);
 
         // Delete
         for (let i = phrase.length - 1; i >= 0; i--) {
           setDisplayed(phrase.slice(0, i));
-          await delay(60);
+          await delay(deleteSpeed);
         }
 
-        await delay(400);
+        await delay(isSlowZone ? 500 : 200);
       }
     }
   }, []);
