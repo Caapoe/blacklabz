@@ -94,3 +94,9 @@ body {
     @apply border-border outline-ring/50;
   }
 }
+
+@media (max-width: 767px) {
+  .scatter-prompt {
+    left: 50% !important;
+  }
+}

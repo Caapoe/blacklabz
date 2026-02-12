@@ -83,9 +83,9 @@ export default function Home() {
       setDisplayed("");
 
       const positions = [
-        { x: 30, y: 30 },
+        { x: 30, y: 35 },
         { x: 65, y: 50 },
-        { x: 40, y: 70 },
+        { x: 40, y: 65 },
       ];
 
       for (let w = 0; w < scatterWords.length; w++) {
@@ -166,7 +166,7 @@ export default function Home() {
       {scatterPrompts.map((prompt) => (
         <div
           key={prompt.id}
-          className="absolute font-mono text-xl sm:text-2xl md:text-3xl font-bold transition-opacity duration-500"
+          className="scatter-prompt absolute font-mono text-xl sm:text-2xl md:text-3xl font-bold transition-opacity duration-500 text-center"
           style={{ left: `${prompt.x}%`, top: `${prompt.y}%`, transform: "translate(-50%, -50%)" }}
         >
           {prompt.displayed}

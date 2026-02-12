@@ -12,6 +12,9 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "Black Labz",
   description: "Black Labz Agency",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
