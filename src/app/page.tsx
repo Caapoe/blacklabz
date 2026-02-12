@@ -11,7 +11,6 @@ const phrases = [
   "Brand Agnostic",
   "Solution Architect",
   "Vibe Coder",
-  "From Heart of Europe",
   "Tallinn",
 ];
 
