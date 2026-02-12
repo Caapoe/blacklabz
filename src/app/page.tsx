@@ -84,9 +84,9 @@ export default function Home() {
       setDisplayed("");
 
       const positions = [
-        { x: 15, y: 25 },
-        { x: 55, y: 50 },
-        { x: 25, y: 72 },
+        { x: 30, y: 30 },
+        { x: 65, y: 50 },
+        { x: 40, y: 70 },
       ];
 
       for (let w = 0; w < scatterWords.length; w++) {
@@ -150,10 +150,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex min-h-screen items-center justify-center relative overflow-hidden">
+    <div className="flex min-h-screen items-center justify-center relative overflow-hidden px-6">
       {/* Main center prompt */}
       {phase === "typing" && (
-        <h1 className="text-4xl font-bold font-mono">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold font-mono text-center">
           {displayed}
           <span
             className={`${showCursor ? "opacity-100" : "opacity-0"} transition-opacity duration-100`}
@@ -167,7 +167,7 @@ export default function Home() {
       {scatterPrompts.map((prompt) => (
         <div
           key={prompt.id}
-          className="absolute font-mono text-2xl md:text-3xl font-bold transition-opacity duration-500"
+          className="absolute font-mono text-xl sm:text-2xl md:text-3xl font-bold transition-opacity duration-500"
           style={{ left: `${prompt.x}%`, top: `${prompt.y}%`, transform: "translate(-50%, -50%)" }}
         >
           {prompt.displayed}
