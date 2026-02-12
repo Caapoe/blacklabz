@@ -9,7 +9,7 @@ export default function Header() {
           alt="Black Labz"
           width={180}
           height={34}
-          className="h-5 w-auto"
+          className="h-5 w-auto invert"
           priority
         />
       </a>
