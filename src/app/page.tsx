@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 
 const phrases = [
   "Black Labz",
-  "Web 3 Service Designs",
+  "AI Software",
   "Product Lead",
   "AI Driven",
   "Data Focused",
