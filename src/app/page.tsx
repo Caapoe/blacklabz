@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 
 const phrases = [
   "Black Labz",
-  "Web 3 Service Designs",
+  "AI development",
   "Product Lead",
   "AI Driven",
   "Data Focused",
@@ -36,7 +36,6 @@ export default function Home() {
     const delay = (ms: number) => new Promise((r) => setTimeout(r, ms));
     const total = phrases.length;
 
-    // eslint-disable-next-line no-constant-condition
     while (true) {
       // Phase 1: main typing sequence
       setPhase("typing");
